@@ -60,8 +60,8 @@ async function run () {
             const updateDoc = { $set: user };
             const result = await usersCollection.updateOne(filter, updateDoc, options);
             res.json(result);
-         });
-        
+        });
+
         // make admin
         app.put('/users/admin', verifyToken, async (req, res) => {
             const user = req.body;
@@ -164,12 +164,12 @@ async function run () {
             const userOrder = await cursor.toArray();
             res.json(userOrder);
         });
-		
-		// read all order
+
+        // read all order
         app.get('/order', async (req, res) => {
             const cursor = orderCollection.find({});
-            const userOrder = await cursor.toArray();
-            res.json(userOrder);
+            const allOrder = await cursor.toArray();
+            res.json(allOrder);
         });
 
         // delete user order
@@ -197,12 +197,12 @@ async function run () {
             const userReview = await cursor.toArray();
             res.send(userReview);
         });
-		
-		// read all review
+
+        // read all review
         app.get('/review', async (req, res) => {
             const cursor = reviewCollection.find({});
-            const allreview = await cursor.toArray();
-            res.json(allreview);
+            const allReview = await cursor.toArray();
+            res.json(allReview);
         });
     }
 
